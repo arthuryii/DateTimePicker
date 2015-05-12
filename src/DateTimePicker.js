@@ -435,6 +435,8 @@
 				
 				dtPickerObj._showPicker(sMode, sMinValue, sMaxValue, sFormat, sCurrent, oElement, sStartEnd, sStartEndElem);
 			}
+			
+			$(dtPickerObj.element).find(".dtpicker-compValue").eq(0).focus();
 		},
 	
 		_setButtonAction: function(bFromTab)
@@ -1035,17 +1037,7 @@
 			$('.dtpicker-compValue').blur(function()
 			{
 				dtPickerObj._getValuesFromInputBoxes();
-				dtPickerObj._setCurrentDate();
-			
-				dtPickerObj.dataObject.bElemFocused = false;
-				var $oParentElem = $(this).parent().parent();
-				setTimeout(function()
-				{
-					if($oParentElem.is(':last-child') && !dtPickerObj.dataObject.bElemFocused)
-					{
-						dtPickerObj._setButtonAction(false);
-					}
-				}, 50);			
+				dtPickerObj._setCurrentDate();		
 			});
 		
 			$(".dtpicker-compValue").keyup(function()
@@ -1080,6 +1072,12 @@
 					}
 				}
 			});
+			
+            		$(".dtpicker-compValue").keydown(function () {
+        			if ($(this).parent().parent().is(':last-child') && window.event.keyCode == 9) {
+                			dtPickerObj._setButtonAction();
+                		}
+            		});
 
 			//-----------------------------------------------------------------------
 		
