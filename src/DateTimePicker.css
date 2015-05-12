@@ -219,7 +219,7 @@
 	background: #FFFFFF;
 
 	font-size: 100%;
-
+	box-shadow:none !important;
 	-webkit-appearance: none;
 }
 
