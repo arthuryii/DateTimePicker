@@ -814,18 +814,9 @@
 				dtPickerObj.dataObject.oInputElement = null;
 			}
 		
-			$(dtPickerObj.element).fadeOut(iDuration);
-			if(iDuration == 0)
-			{
-				$(dtPickerObj.element).find('.dtpicker-subcontent').html("");
-			}
-			else
-			{
-				setTimeout(function()
-				{
-					$(dtPickerObj.element).find('.dtpicker-subcontent').html("");
-				}, iDuration);
-			}
+			$(dtPickerObj.element).fadeOut(iDuration,function(){
+                                $(dtPickerObj.element).find('.dtpicker-subcontent').html("");
+                        });
 
 			$(document).unbind("click.DateTimePicker");
 			$(document).unbind("keydown.DateTimePicker");
@@ -1924,4 +1915,3 @@
 	};
 	
 }));
-
